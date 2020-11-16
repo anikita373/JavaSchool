@@ -1,3 +1,10 @@
+# Сlass file
 *.class
-*.idea
-*.iml
+
+# Package
+*.jar
+*.zip
+*.rar
+
+# idea/
+.idea/
