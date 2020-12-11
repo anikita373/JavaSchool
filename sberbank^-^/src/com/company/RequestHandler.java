@@ -2,14 +2,14 @@ package com.company;
 
 public class RequestHandler extends Thread{
     private int idHandler;
-    private FrontEnd frontalSystem;
-    private BackEnd backSystemBank;
+    private FrontEnd frontEnd;
+    private BackEnd backEnd;
 
-    RequestHandler(int id, FrontEnd fs, BackEnd backSystem)
+    RequestHandler(int id, FrontEnd frontEnd, BackEnd backEnd)
     {
         this.idHandler = id;
-        this.frontalSystem = fs;
-        this.backSystemBank=backSystem;
+        this.frontEnd = frontEnd;
+        this.backEnd=backEnd;
     }
 
     @Override
@@ -18,10 +18,10 @@ public class RequestHandler extends Thread{
         while (true)
         {
             //получаем запрос из очереди
-            Request request = frontalSystem.getRequest();
+            Request request = frontEnd.getRequest();
             System.out.println("Обработчик заявок №"+idHandler+": Получена заявка на обработку по клиенту - "+request.getClientName());
             //пробуем выполнить транзакцию
-            backSystemBank.runTransaction(request,getIdHandler());
+            backEnd.runTransaction(request,getIdHandler());
         }
     }
 
